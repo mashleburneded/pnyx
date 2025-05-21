@@ -1,10 +1,10 @@
 import Image from 'next/image'
 
 const courses = [
-  { name: 'Intro to Algorithmic Trading', level: 'Basic' },
-  { name: 'Market Making Strategies', level: 'Intermediate' },
-  { name: 'Directional Strategies & V2 Framework', level: 'Intermediate' },
-  { name: 'Cross Exchange Market Making', level: 'Advanced' },
+  { name: 'Intro to Algorithmic Trading', level: 'Basic', difficulty: 1 },
+  { name: 'Market Making Strategies', level: 'Intermediate', difficulty: 2 },
+  { name: 'Directional Strategies', level: 'Intermediate', difficulty: 3 },
+  { name: 'Cross Exchange Market Making', level: 'Advanced', difficulty: 4 },
 ];
 
 const features = [
@@ -63,7 +63,16 @@ export default function AccelerateCareerSection() {
               className="bg-black backdrop-blur-sm border border-gray-800 p-5 rounded-md flex flex-col items-center text-center hover:bg-gray-800/40 transition-all duration-300 shadow-lg"
             >
               <h3 className="text-lg font-semibold text-primary mb-1.5">{course.name}</h3>
-              <p className="text-gray-400 text-sm">{course.level}</p>
+              <p className="text-gray-400 text-sm mb-2">{course.level}</p>
+              <div className="mt-auto">
+                <Image 
+                  src={`/difficulty-${course.difficulty}.svg`} 
+                  alt={`Difficulty level ${course.difficulty}`} 
+                  width={60} 
+                  height={20} 
+                  className="mt-2"
+                />
+              </div>
             </div>
           ))}
         </div>
