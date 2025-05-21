@@ -32,9 +32,16 @@ const features = [
 
 export default function AccelerateCareerSection() {
   return (
-    <section className="py-16 md:py-20 bg-black text-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 text-primary">
+    <section className="py-16 md:py-20 bg-black text-white relative overflow-hidden">
+      {/* Circuit pattern overlay */}
+      <div className="absolute inset-0 bg-[url('/circuit-pattern.svg')] bg-repeat opacity-15"></div>
+      
+      {/* Subtle glow effects */}
+      <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-10"></div>
+      <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-10"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 gradient-text">
           ACCELERATE YOUR TRADING CAREER
         </h2>
         <p className="text-base md:text-lg text-gray-400 text-center mb-10">
@@ -47,13 +54,13 @@ export default function AccelerateCareerSection() {
             alt="Cohort Program Overview"
             width={1200}
             height={675}
-            className="rounded-lg mx-auto shadow-2xl"
+            className="rounded-md mx-auto shadow-2xl"
           />
         </div>
 
         <p className="text-center text-gray-300 max-w-2xl mx-auto mb-10 text-sm md:text-base">
           Your cohort enrollment includes all four premium{' '}
-          <a href="https://courses.botcamp.xyz/slides/all" className="text-primary hover:underline">
+          <a href="https://courses.botcamp.xyz/slides/all" className="text-primary hover:text-primary/80 transition-colors duration-300">
             Botcamp courses
           </a>{' '}
           an $800 value with over 20 hours of expert instruction from basic to advanced trading concepts
@@ -63,7 +70,7 @@ export default function AccelerateCareerSection() {
           {courses.map((course) => (
             <div
               key={course.name}
-              className="bg-gray-900 p-5 rounded-lg flex flex-col items-center text-center hover:shadow-primary/20 hover:shadow-lg transition-shadow"
+              className="bg-gray-900/30 backdrop-blur-sm border border-gray-800 p-5 rounded-md flex flex-col items-center text-center hover:bg-gray-800/40 transition-all duration-300"
             >
               <h3 className="text-lg font-semibold text-primary mb-1.5">{course.name}</h3>
               <p className="text-gray-400 text-sm">{course.level}</p>
@@ -73,8 +80,8 @@ export default function AccelerateCareerSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
           {features.map((feature) => (
-            <div key={feature.title} className="flex flex-col items-center text-center">
-              <div className="relative w-12 h-12 mb-3">
+            <div key={feature.title} className="flex flex-col items-center text-center group">
+              <div className="relative w-12 h-12 mb-3 transition-transform duration-300 group-hover:scale-110">
                 <Image src={feature.icon} alt={feature.title} layout="fill" objectFit="contain" />
               </div>
               <h3 className="text-lg font-semibold text-primary mb-1.5">{feature.title}</h3>
@@ -82,6 +89,17 @@ export default function AccelerateCareerSection() {
             </div>
           ))}
         </div>
+      </div>
+      
+      {/* Diagonal transition to next section */}
+      <div className="absolute bottom-0 left-0 w-full">
+        <Image 
+          src="/diagonal-transition.svg" 
+          alt="Diagonal transition" 
+          width={1440} 
+          height={100}
+          className="w-full h-auto"
+        />
       </div>
     </section>
   )

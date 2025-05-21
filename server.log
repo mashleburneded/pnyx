@@ -5,4 +5,4 @@ $ next start -p "12001" -H "0.0.0.0"
    - Network:      http://0.0.0.0:12001
 
  ✓ Starting...
- ✓ Ready in 361ms
+ ✓ Ready in 363ms
