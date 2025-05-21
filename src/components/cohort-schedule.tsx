@@ -189,7 +189,7 @@ const WeekIcon = ({ weekNumber }: { weekNumber: number }) => {
 
 export default function CohortScheduleSection() {
   return (
-    <div className="py-20 md:py-28 bg-black text-white relative overflow-hidden">
+    <div className="py-20 md:py-28 bg-black text-white relative overflow-hidden -mt-1">
       {/* Background effect */}
       <div className="absolute inset-0 bg-black"></div>
       {/* Grid pattern overlay */}
@@ -216,7 +216,7 @@ export default function CohortScheduleSection() {
           {scheduleHighlights.map((highlight) => (
             <div
               key={highlight.title}
-              className="bg-gray-900/80 backdrop-blur-sm p-8 rounded-xl flex flex-col items-center text-center card-hover border border-gray-800/50"
+              className="bg-gray-900/95 backdrop-blur-sm p-8 rounded-md flex flex-col items-center text-center card-hover border border-gray-800/70 shadow-lg"
             >
               <div className="relative w-16 h-16 mb-5 rounded-full bg-primary/10 flex items-center justify-center p-3 ring-2 ring-primary/20">
                 <Image 
@@ -234,7 +234,10 @@ export default function CohortScheduleSection() {
         </div>
 
         {weeklySchedule.map((weekData) => (
-          <div key={weekData.week} className="mb-12 last:mb-0 bg-gray-900/20 rounded-md p-5 md:p-7 border border-gray-800/20 backdrop-blur-sm">
+          <div key={weekData.week} className="mb-8 last:mb-0 bg-gray-900/80 rounded-md p-5 md:p-7 border border-gray-800/60 backdrop-blur-sm relative shadow-md">
+            {weekData.week !== 0 && (
+              <div className="absolute left-[2.5rem] -top-8 w-px h-8 bg-gradient-to-b from-transparent to-primary/50"></div>
+            )}
             <div className="flex items-center mb-5">
               <WeekIcon weekNumber={weekData.week} />
               <div>
@@ -253,7 +256,7 @@ export default function CohortScheduleSection() {
               <Accordion type="single" collapsible className="w-full">
                 {weekData.details.map((detail: SessionDetail, index) => (
                   <AccordionItem key={index} value={`week-${weekData.week}-detail-${index}`} className="border-b border-gray-800/30 last:border-b-0 relative mb-2 last:mb-0">
-                    <div className="absolute left-[5px] md:left-[calc(5rem+5px)] top-[calc(1.5rem+4px)] w-2 h-2 rounded-full bg-primary/80 ring-1 ring-offset-1 ring-offset-background ring-primary/20 group-data-[state=open]:bg-primary transition-all -translate-x-1/2"></div>
+                    <div className="absolute left-[5px] md:left-[calc(5rem+5px)] top-[1.5rem] w-3 h-3 rounded-full bg-primary/80 -translate-x-1/2"></div>
                     
                     <AccordionTrigger className="py-5 text-left hover:no-underline group pl-8 md:pl-16 rounded-lg hover:bg-gray-800/20 transition-colors">
                       <div className="flex-grow">
@@ -263,7 +266,8 @@ export default function CohortScheduleSection() {
                               detail.type && !detail.sessionTitle && detail.type.toLowerCase().includes('office hours') ? 'text-orange-300 group-hover:text-orange-200' :
                               detail.type && !detail.sessionTitle && detail.type.toLowerCase().includes('certification') ? 'text-fuchsia-300 group-hover:text-fuchsia-200' :
                               'text-foreground group-hover:text-primary'
-                            }`}>{detail.sessionTitle || detail.type}
+                            }`}>
+                            <span className="relative">{detail.sessionTitle || detail.type}</span>
                           </h4>
                           <div className="flex items-center mt-2 sm:mt-0 flex-shrink-0">
                             {detail.date && <p className="text-xs font-medium text-gray-400 mr-4 whitespace-nowrap">{detail.date}</p>}
@@ -295,13 +299,13 @@ export default function CohortScheduleSection() {
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="pl-8 md:pl-16 pb-6 pt-2 text-gray-300 text-sm md:text-base leading-relaxed">
-                      <div className="bg-gray-900/20 p-4 md:p-5 rounded-md border border-gray-800/20">
+                      <div className="bg-gray-900/80 p-4 md:p-5 rounded-md border border-gray-800/60 shadow-inner">
                         <p>{detail.description}</p>
                         {detail.items && (
                           <ul className="list-none mt-3 space-y-2">
                             {detail.items.map((item: string, i: number) => (
                               <li key={i} className="text-gray-300 py-1 flex items-start">
-                                <span className="text-primary mr-2 mt-1">•</span>
+                                <span className="text-primary mr-3 mt-0.5 flex-shrink-0">•</span>
                                 <span>{item}</span>
                               </li>
                             ))}
