@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "../../components/header";
-import Footer from "../../components/footer";
-import { cn } from "../../lib/utils";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import { cn } from "@/lib/utils";
 import ClientBody from "./ClientBody";
 
-const roboto = Roboto({
-  weight: ['400', '500', '700'],
+const inter = Inter({
+  weight: ['400', '500', '600', '700'],
   subsets: ["latin"],
-  variable: '--font-roboto',
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const poppins = Poppins({
+  weight: ['500', '600', '700', '800'],
+  subsets: ["latin"],
+  variable: '--font-poppins',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -43,7 +51,8 @@ export default function RootLayout({
       <ClientBody
         className={cn(
           "min-h-screen bg-background font-sans antialiased flex flex-col",
-          roboto.variable
+          inter.variable,
+          poppins.variable
         )}
       >
         <Header />

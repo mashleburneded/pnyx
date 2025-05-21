@@ -21,7 +21,7 @@ export default {
     extend: {
       fontFamily: {
         sans: [
-          "var(--font-roboto)",
+          "var(--font-inter)",
           "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
@@ -35,6 +35,18 @@ export default {
           '"Segoe UI Emoji"',
           '"Segoe UI Symbol"',
           '"Noto Color Emoji"',
+        ],
+        heading: [
+          "var(--font-poppins)",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          '"Noto Sans"',
+          "sans-serif",
         ],
       },
       colors: {
@@ -79,5 +91,24 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function({ addUtilities }: { addUtilities: any }) {
+      const newUtilities = {
+        '.text-shadow-sm': {
+          textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)',
+        },
+        '.text-shadow': {
+          textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+        },
+        '.text-shadow-lg': {
+          textShadow: '0 4px 8px rgba(0, 0, 0, 0.4)',
+        },
+        '.text-shadow-none': {
+          textShadow: 'none',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 } satisfies Config;

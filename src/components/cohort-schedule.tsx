@@ -1,5 +1,16 @@
+import React from 'react';
 import Image from 'next/image';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
+
+// Define types for our data structures
+type SessionDetail = {
+  sessionTitle?: string;
+  date?: string;
+  type: string;
+  description?: string;
+  items?: string[];
+  footer?: string;
+};
 
 const scheduleHighlights = [
   {
@@ -165,94 +176,115 @@ const WeekIcon = ({ weekNumber }: { weekNumber: number }) => {
   else if (weekNumber === 4) actualIconSrc = 'https://www.botcamp.xyz/cohorts/4.svg'; // Placeholder, replace with actual if available
 
   return (
-    <div className="relative w-10 h-10 md:w-12 md:h-12 mr-3 md:mr-4 flex-shrink-0">
-      <Image src={actualIconSrc} alt={`Week ${weekNumber}`} layout="fill" objectFit="contain" />
+    <div className="relative w-12 h-12 md:w-14 md:h-14 mr-4 md:mr-5 flex-shrink-0 rounded-full bg-gray-900/50 p-2.5 border border-gray-700/30">
+      <Image 
+        src={actualIconSrc} 
+        alt={`Week ${weekNumber}`} 
+        width={56} 
+        height={56}
+      />
     </div>
   );
 };
 
 export default function CohortScheduleSection() {
   return (
-    <section className="py-16 md:py-20 bg-black text-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 text-primary">
-          Botcamp Cohort 12 Schedule
-        </h2>
-        <p className="text-base md:text-lg text-gray-400 text-center max-w-2xl lg:max-w-3xl mx-auto mb-8">
-          A Botcamp cohort is an intensive 4-week bootcamp that teaches participants the theory, business, and technical aspects of market making. By the end of the cohort, students will have designed and coded their own custom market making strategy and earned an official Hummingbot Certification.
-        </p>
-        <p className="text-sm md:text-base text-gray-500 text-center max-w-2xl lg:max-w-3xl mx-auto mb-12">
-          Each session runs for 1.5 to 2 hours with interactive Q&A, and participants receive lifetime access to all session recordings, code samples, and course materials.
-        </p>
+    <div className="py-20 md:py-28 bg-black text-white relative overflow-hidden">
+      {/* Background effect */}
+      <div className="absolute inset-0 bg-black"></div>
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-repeat opacity-15"></div>
+      {/* Subtle glow effects */}
+      <div className="absolute top-1/4 -left-20 w-60 h-60 bg-primary/10 rounded-full blur-3xl opacity-10"></div>
+      <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl opacity-10"></div>
+      
+      <div className="container relative z-10">
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6 gradient-text">
+            Botcamp Cohort 12 Schedule
+          </h2>
+          <div className="w-24 h-1 bg-primary mx-auto mb-8 rounded-full"></div>
+          <p className="text-base md:text-xl text-gray-300 mb-6 leading-relaxed">
+            A Botcamp cohort is an intensive 4-week bootcamp that teaches participants the theory, business, and technical aspects of market making. By the end of the cohort, students will have designed and coded their own custom market making strategy and earned an official Hummingbot Certification.
+          </p>
+          <p className="text-sm md:text-base text-gray-400 max-w-2xl mx-auto">
+            Each session runs for 1.5 to 2 hours with interactive Q&A, and participants receive lifetime access to all session recordings, code samples, and course materials.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {scheduleHighlights.map((highlight) => (
             <div
               key={highlight.title}
-              className="bg-gray-900 p-5 rounded-lg flex flex-col items-center text-center hover:shadow-primary/20 hover:shadow-lg transition-shadow"
+              className="bg-gray-900/80 backdrop-blur-sm p-8 rounded-xl flex flex-col items-center text-center card-hover border border-gray-800/50"
             >
-              <div className="relative w-10 h-10 mb-3">
-                <Image src={highlight.icon} alt={highlight.title} layout="fill" objectFit="contain" />
+              <div className="relative w-16 h-16 mb-5 rounded-full bg-primary/10 flex items-center justify-center p-3 ring-2 ring-primary/20">
+                <Image 
+                  src={highlight.icon} 
+                  alt={highlight.title} 
+                  width={40} 
+                  height={40} 
+                  className="drop-shadow-lg" 
+                />
               </div>
-              <h3 className="text-lg font-semibold text-primary mb-1.5">{highlight.title}</h3>
-              <p className="text-gray-400 text-xs leading-relaxed">{highlight.description}</p>
+              <h3 className="text-xl font-bold text-primary mb-3 font-heading">{highlight.title}</h3>
+              <p className="text-gray-300 text-sm md:text-base leading-relaxed">{highlight.description}</p>
             </div>
           ))}
         </div>
 
         {weeklySchedule.map((weekData) => (
-          <div key={weekData.week} className="mb-10">
+          <div key={weekData.week} className="mb-12 last:mb-0 bg-gray-900/20 rounded-md p-5 md:p-7 border border-gray-800/20 backdrop-blur-sm">
             <div className="flex items-center mb-5">
               <WeekIcon weekNumber={weekData.week} />
               <div>
-                <h3 className="text-xl md:text-2xl font-semibold text-primary">
-                  Week {weekData.week}: {weekData.title}
+                <span className="text-xs uppercase tracking-wider text-gray-400 font-medium mb-1 block">
+                  {weekData.week === 0 ? 'Preparation' : `Week ${weekData.week}`}
+                </span>
+                <h3 className="text-xl md:text-2xl font-bold text-primary font-heading">
+                  {weekData.title}
                 </h3>
               </div>
             </div>
-            <div className="pl-0 md:pl-16 relative"> {/* Removed space-y-2, accordion items will manage their own spacing */}
-              {/* Vertical timeline bar - Positioned to be alongside the accordion items */}
-              {weekData.details.length > 1 && ( // Only show if there's more than one item to connect
-                 <div className="absolute left-[5px] md:left-[calc(4rem+5px)] top-[1rem] bottom-[1rem] w-0.5 bg-border opacity-70 rounded-full -translate-x-1/2"></div> {/* Changed bg-gray-700 to bg-border */}
+            <div className="pl-0 md:pl-20 relative">
+              {weekData.details.length > 1 && (
+                <div className="absolute left-[5px] md:left-[calc(5rem+5px)] top-[1rem] bottom-[1rem] w-px bg-gradient-to-b from-primary/30 via-primary/10 to-transparent -translate-x-1/2"></div>
               )}
               <Accordion type="single" collapsible className="w-full">
-                {weekData.details.map((detail, index) => (
-                  <AccordionItem key={index} value={`week-${weekData.week}-detail-${index}`} className="border-b border-border last:border-b-0 relative"> {/* Changed border-gray-700 to border-border */}
-                    {/* Timeline Dot - Positioned to the left of the trigger */}
-                    <div className="absolute left-[5px] md:left-[calc(4rem+5px)] top-[calc(1rem+4px)] w-2.5 h-2.5 rounded-full bg-primary ring-2 ring-offset-2 ring-offset-background ring-background group-data-[state=open]:ring-primary/50 transition-all -translate-x-1/2"></div> {/* Changed ring-black to ring-background */}
+                {weekData.details.map((detail: SessionDetail, index) => (
+                  <AccordionItem key={index} value={`week-${weekData.week}-detail-${index}`} className="border-b border-gray-800/30 last:border-b-0 relative mb-2 last:mb-0">
+                    <div className="absolute left-[5px] md:left-[calc(5rem+5px)] top-[calc(1.5rem+4px)] w-2 h-2 rounded-full bg-primary/80 ring-1 ring-offset-1 ring-offset-background ring-primary/20 group-data-[state=open]:bg-primary transition-all -translate-x-1/2"></div>
                     
-                    <AccordionTrigger className="py-4 text-left hover:no-underline group pl-8 md:pl-12"> {/* Added padding for dot */}
-                      <div className="flex-grow"> {/* Content of the trigger itself */}
+                    <AccordionTrigger className="py-5 text-left hover:no-underline group pl-8 md:pl-16 rounded-lg hover:bg-gray-800/20 transition-colors">
+                      <div className="flex-grow">
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                          {/* Ensure default color is foreground, specific types override, hover to primary for default only */}
-                          <h4 className={`text-lg font-semibold transition-colors ${
+                          <h4 className={`text-lg md:text-xl font-bold font-heading transition-colors ${
                               detail.type && !detail.sessionTitle && detail.type.toLowerCase().includes('homework') ? 'text-yellow-400 group-hover:text-yellow-300' :
                               detail.type && !detail.sessionTitle && detail.type.toLowerCase().includes('office hours') ? 'text-orange-300 group-hover:text-orange-200' :
                               detail.type && !detail.sessionTitle && detail.type.toLowerCase().includes('certification') ? 'text-fuchsia-300 group-hover:text-fuchsia-200' :
-                              'text-foreground group-hover:text-primary' // Default to text-foreground
+                              'text-foreground group-hover:text-primary'
                             }`}>{detail.sessionTitle || detail.type}
                           </h4>
-                          <div className="flex items-center mt-1 sm:mt-0 flex-shrink-0">
-                            {detail.date && <p className="text-xs text-muted-foreground mr-3 whitespace-nowrap">{detail.date}</p>} {/* Changed text-gray-500 to text-muted-foreground */}
-                            {/* Display badge if type exists, regardless of sessionTitle, for consistency */}
+                          <div className="flex items-center mt-2 sm:mt-0 flex-shrink-0">
+                            {detail.date && <p className="text-xs font-medium text-gray-400 mr-4 whitespace-nowrap">{detail.date}</p>}
                             {detail.type && (
                               <span
-                                className={`px-1.5 py-0.5 rounded-full text-xs font-medium ${
+                                className={`px-2.5 py-0.5 rounded-md text-xs font-medium ${
                                   detail.type === 'Theory'
-                                    ? 'bg-sky-500/20 text-sky-300'
+                                    ? 'bg-sky-900/30 text-sky-200'
                                     : detail.type === 'Technical'
-                                    ? 'bg-emerald-500/20 text-emerald-300'
+                                    ? 'bg-emerald-900/30 text-emerald-200'
                                     : detail.type === 'Coaching'
-                                    ? 'bg-orange-500/20 text-orange-300'
+                                    ? 'bg-orange-900/30 text-orange-200'
                                     : detail.type === 'Presentation'
-                                    ? 'bg-fuchsia-500/20 text-fuchsia-300'
+                                    ? 'bg-fuchsia-900/30 text-fuchsia-200'
                                     : detail.type.toLowerCase().includes('homework')
-                                    ? 'bg-yellow-500/20 text-yellow-300'
+                                    ? 'bg-yellow-900/30 text-yellow-200'
                                     : detail.type.toLowerCase().includes('office hours')
-                                    ? 'bg-orange-500/20 text-orange-300'
+                                    ? 'bg-orange-900/30 text-orange-200'
                                     : detail.type.toLowerCase().includes('certification')
-                                    ? 'bg-fuchsia-500/20 text-fuchsia-300'
-                                    : 'bg-muted text-muted-foreground' // Default badge for other types like 'Prework', theme aligned
+                                    ? 'bg-fuchsia-900/30 text-fuchsia-200'
+                                    : 'bg-gray-800/40 text-gray-200'
                                 }`}
                               >
                                 {detail.type}
@@ -261,31 +293,22 @@ export default function CohortScheduleSection() {
                           </div>
                         </div>
                       </div>
-                      {/* Chevron is part of AccordionTrigger by default in ShadCN (added via ::after pseudo-element) */}
                     </AccordionTrigger>
-                    <AccordionContent className="pl-8 md:pl-12 pb-6 pt-2 text-muted-foreground text-sm leading-relaxed"> {/* Changed text-gray-400 to text-muted-foreground, increased bottom padding */}
-                      <p>{detail.description}</p>
-                      {detail.items && (
-                        <ul className="list-none mt-3 space-y-1.5"> {/* Increased spacing */}
-                          {detail.items.map((item: string, i: number) => (
-                            <li key={i} className="flex items-start">
-                              <svg
-                                className="w-3.5 h-3.5 mr-2.5 mt-0.5 text-primary flex-shrink-0" // Increased margin
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                  clipRule="evenodd"
-                                ></path>
-                              </svg>
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      {detail.footer && <p className="text-xs text-gray-500 mt-3">{detail.footer}</p>} {/* Increased margin */}
+                    <AccordionContent className="pl-8 md:pl-16 pb-6 pt-2 text-gray-300 text-sm md:text-base leading-relaxed">
+                      <div className="bg-gray-900/20 p-4 md:p-5 rounded-md border border-gray-800/20">
+                        <p>{detail.description}</p>
+                        {detail.items && (
+                          <ul className="list-none mt-3 space-y-2">
+                            {detail.items.map((item: string, i: number) => (
+                              <li key={i} className="flex items-start pl-6 relative">
+                                <span className="text-gray-400 absolute left-0">•</span>
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        {detail.footer && <p className="mt-3 text-sm text-gray-400 italic">{detail.footer}</p>}
+                      </div>
                     </AccordionContent>
                   </AccordionItem>
                 ))}
@@ -294,6 +317,6 @@ export default function CohortScheduleSection() {
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

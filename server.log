@@ -1,0 +1,8 @@
+nohup: ignoring input
+$ next start -p "12001" -H "0.0.0.0"
+   ▲ Next.js 15.2.0
+   - Local:        http://localhost:12001
+   - Network:      http://0.0.0.0:12001
+
+ ✓ Starting...
+ ✓ Ready in 361ms

@@ -4,8 +4,10 @@ import { useEffect } from "react";
 
 export default function ClientBody({
   children,
+  className,
 }: {
   children: React.ReactNode;
+  className?: string;
 }) {
   // Remove any extension-added classes during hydration
   useEffect(() => {
@@ -13,5 +15,5 @@ export default function ClientBody({
     document.body.className = "antialiased";
   }, []);
 
-  return <div className="antialiased">{children}</div>;
+  return <div className={className || "antialiased"}>{children}</div>;
 }
