@@ -1,10 +1,10 @@
 import Image from 'next/image'
 
 const courses = [
-  { name: 'Intro to Algorithmic Trading', level: 'Basic', icon: '/basic-level.svg' },
-  { name: 'Market Making Strategies', level: 'Intermediate', icon: '/intermediate-level.svg' },
-  { name: 'Directional Strategies', level: 'Intermediate', icon: '/intermediate-level.svg' },
-  { name: 'Cross Exchange Market Making', level: 'Advanced', icon: '/advanced-level.svg' },
+  { name: 'Intro to Algorithmic Trading', level: 'Basic', icon: '/basic-level-new.svg' },
+  { name: 'Market Making Strategies', level: 'Intermediate', icon: '/intermediate-level-new.svg' },
+  { name: 'Directional Strategies', level: 'Intermediate', icon: '/intermediate-level-new.svg' },
+  { name: 'Cross Exchange Market Making', level: 'Advanced', icon: '/advanced-level-new.svg' },
 ];
 
 const features = [
@@ -26,7 +26,7 @@ const features = [
   {
     icon: 'https://ext.same-assets.com/1232453280/2833895142.svg',
     title: 'GET CERTIFIED',
-    description: 'Present your strategy on Demo Day and earn official recognition as a certified Hummingbot market maker',
+    description: 'Present your strategy on Demo Day and earn official recognition as a certified Pnyx Institute market maker',
   },
 ];
 
@@ -60,12 +60,17 @@ export default function AccelerateCareerSection() {
           {courses.map((course) => (
             <div
               key={course.name}
-              className="bg-black backdrop-blur-sm border border-gray-800 p-5 rounded-md flex flex-col items-center text-center hover:bg-gray-800/40 transition-all duration-300 shadow-lg"
+              className="bg-black backdrop-blur-sm border border-gray-800 p-6 rounded-md flex flex-col items-center text-center hover:bg-gray-800/40 transition-all duration-300 shadow-lg min-h-[180px] justify-between"
             >
-              <h3 className="text-lg font-semibold text-primary mb-1.5">{course.name}</h3>
-              <div className="flex items-center gap-2">
-                <Image src={course.icon} alt={`${course.level} level`} width={24} height={24} />
-                <p className="text-gray-400 text-sm">{course.level}</p>
+              <h3 className="text-lg font-semibold text-primary mb-3">{course.name}</h3>
+              <div className="w-full mt-auto">
+                <Image 
+                  src={course.icon} 
+                  alt={`${course.level} level`} 
+                  width={100} 
+                  height={30} 
+                  className="w-full h-auto transform hover:scale-105 transition-transform duration-300"
+                />
               </div>
             </div>
           ))}

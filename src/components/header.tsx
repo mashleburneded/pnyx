@@ -7,9 +7,11 @@ export default function Header() {
       {/* Gradient border effect */}
       <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/70 to-transparent"></div>
       
-      <Link href="/" className="flex items-center space-x-2">
-        <Image src="/phoenix-logo.svg" alt="Pnyx Institute Logo" width={30} height={30} />
-        <span className="text-xl font-bold text-primary">Pnyx Institute</span>
+      <Link href="/" className="flex items-center space-x-3">
+        <div className="relative w-[50px] h-[50px] flex items-center justify-center">
+          <Image src="/phoenix-logo-new.svg" alt="Pnyx Institute Logo" width={50} height={50} className="transform hover:scale-110 transition-transform duration-300" />
+        </div>
+        <span className="text-2xl font-bold text-primary">Pnyx Institute</span>
       </Link>
       <nav className="space-x-6 flex items-center">
         <Link href="https://courses.botcamp.xyz/slides/all" className="text-sm hover:text-primary transition-colors text-gray-300">

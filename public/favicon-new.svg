@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient definitions -->
+  <linearGradient id="phoenixGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#FFD700"/>
+    <stop offset="50%" stop-color="#FFA500"/>
+    <stop offset="100%" stop-color="#FF4500"/>
+  </linearGradient>
+  
+  <linearGradient id="flameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#FF4500"/>
+    <stop offset="50%" stop-color="#FF8C00"/>
+    <stop offset="100%" stop-color="#FFD700"/>
+  </linearGradient>
+  
+  <!-- Phoenix body and wings -->
+  <g>
+    <!-- Main body -->
+    <path d="M60 20C55 30 45 35 40 45C35 55 30 70 35 80C40 90 50 95 60 95C70 95 80 90 85 80C90 70 85 55 80 45C75 35 65 30 60 20Z" fill="url(#phoenixGradient)"/>
+    
+    <!-- Left wing -->
+    <path d="M40 45C30 40 20 45 15 55C10 65 15 75 25 80C35 85 45 80 50 70C45 60 40 50 40 45Z" fill="url(#phoenixGradient)"/>
+    
+    <!-- Right wing -->
+    <path d="M80 45C90 40 100 45 105 55C110 65 105 75 95 80C85 85 75 80 70 70C75 60 80 50 80 45Z" fill="url(#phoenixGradient)"/>
+    
+    <!-- Head and beak -->
+    <path d="M60 20C58 15 60 10 65 8C70 6 75 8 77 13C79 18 77 23 72 25C68 27 62 25 60 20Z" fill="url(#phoenixGradient)"/>
+    <path d="M72 25C74 23 76 24 78 26C80 28 79 30 77 32C75 34 73 33 71 31C69 29 70 27 72 25Z" fill="#FFD700"/>
+    
+    <!-- Tail feathers -->
+    <path d="M60 95C55 100 50 110 55 115C60 120 70 115 75 110C70 105 65 100 60 95Z" fill="url(#phoenixGradient)"/>
+    <path d="M60 95C65 100 70 110 65 115C60 120 50 115 45 110C50 105 55 100 60 95Z" fill="url(#phoenixGradient)"/>
+    
+    <!-- Flame effects -->
+    <path d="M60 20C62 15 60 10 58 5C56 0 60 -5 65 -3C70 -1 72 5 70 10C68 15 64 18 60 20Z" fill="url(#flameGradient)" opacity="0.8"/>
+    <path d="M15 55C10 53 5 55 0 60C-5 65 -3 70 2 72C7 74 12 72 15 67C17 62 17 57 15 55Z" fill="url(#flameGradient)" opacity="0.8"/>
+    <path d="M105 55C110 53 115 55 120 60C125 65 123 70 118 72C113 74 108 72 105 67C103 62 103 57 105 55Z" fill="url(#flameGradient)" opacity="0.8"/>
+    
+    <!-- Eye -->
+    <circle cx="68" cy="18" r="2" fill="white"/>
+  </g>
+</svg>

@@ -28,13 +28,13 @@ export const metadata: Metadata = {
     description: "Gain cutting-edge skills through Pnyx Institute's innovative courses.",
     type: "website",
     url: "https://www.pnyxinstitute.com", // Placeholder URL
-    images: [{ url: "/phoenix-logo.svg" }]
+    images: [{ url: "/phoenix-logo-new.svg" }]
   },
   twitter: {
     card: "summary_large_image",
     title: "Pnyx Institute - Empowering Future Innovators",
     description: "Gain cutting-edge skills through Pnyx Institute's innovative courses.",
-    images: ["/phoenix-logo.svg"]
+    images: ["/phoenix-logo-new.svg"]
   }
 };
 
@@ -47,8 +47,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* Add your analytics tracking scripts here (e.g., Google Analytics, Plausible) */}
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon-new.svg" type="image/svg+xml" />
       </head>
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased flex flex-col",
