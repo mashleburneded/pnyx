@@ -176,7 +176,7 @@ const WeekIcon = ({ weekNumber }: { weekNumber: number }) => {
   else if (weekNumber === 4) actualIconSrc = 'https://www.botcamp.xyz/cohorts/4.svg'; // Placeholder, replace with actual if available
 
   return (
-    <div className="relative w-12 h-12 md:w-14 md:h-14 mr-4 md:mr-5 flex-shrink-0 rounded-full bg-gray-900/50 p-2.5 border border-gray-700/30">
+    <div className="relative w-10 h-10 md:w-12 md:h-12 mr-4 md:mr-5 flex-shrink-0 rounded-full bg-black p-2 border border-gray-900">
       <Image 
         src={actualIconSrc} 
         alt={`Week ${weekNumber}`} 
@@ -218,7 +218,7 @@ export default function CohortScheduleSection() {
               key={highlight.title}
               className="bg-black backdrop-blur-sm p-4 py-4 rounded-md flex flex-col items-center text-center card-hover border border-gray-900 shadow-lg w-full md:w-[95%] mx-auto"
             >
-              <div className="relative w-16 h-16 mb-5 rounded-full bg-primary/10 flex items-center justify-center p-3 ring-2 ring-primary/20">
+              <div className="relative w-14 h-14 mb-4 rounded-full bg-black flex items-center justify-center p-2 border border-gray-800">
                 <Image 
                   src={highlight.icon} 
                   alt={highlight.title} 
@@ -234,7 +234,7 @@ export default function CohortScheduleSection() {
         </div>
 
         {weeklySchedule.map((weekData) => (
-          <div key={weekData.week} className="mb-6 last:mb-0 bg-black rounded-md p-4 md:p-6 border border-gray-800 backdrop-blur-sm relative shadow-md">
+          <div key={weekData.week} className="mb-6 last:mb-0 bg-black rounded-md p-4 md:p-6 border border-gray-900 backdrop-blur-sm relative shadow-md">
             {weekData.week !== 0 && (
               <div className="absolute left-[2.5rem] -top-8 w-px h-8 bg-gradient-to-b from-transparent to-primary/50"></div>
             )}
@@ -297,7 +297,7 @@ export default function CohortScheduleSection() {
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="pl-8 md:pl-16 pb-5 pt-2 text-gray-300 text-sm md:text-base leading-relaxed">
-                      <div className="bg-black p-4 md:p-5 rounded-md border border-gray-800 shadow-inner">
+                      <div className="bg-black p-4 md:p-5 rounded-md border border-gray-900 shadow-inner">
                         <p>{detail.description}</p>
                         {detail.items && (
                           <ul className="list-none mt-3 space-y-2">
