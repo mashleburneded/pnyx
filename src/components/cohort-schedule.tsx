@@ -321,6 +321,17 @@ export default function CohortScheduleSection() {
           </div>
         ))}
       </div>
+      
+      {/* Wave transition to next section */}
+      <div className="absolute bottom-0 left-0 w-full">
+        <Image 
+          src="/wave-pattern.svg" 
+          alt="Wave transition" 
+          width={1440} 
+          height={120}
+          className="w-full h-auto"
+        />
+      </div>
     </div>
   );
 }
