@@ -15,5 +15,5 @@ export default function ClientBody({
     document.body.className = "antialiased";
   }, []);
 
-  return <div className={className || "antialiased"}>{children}</div>;
+  return children;
 }

@@ -48,17 +48,17 @@ export default function RootLayout({
       <head>
         {/* Add your analytics tracking scripts here (e.g., Google Analytics, Plausible) */}
       </head>
-      <ClientBody
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased flex flex-col",
-          inter.variable,
-          poppins.variable
-        )}
-      >
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-      </ClientBody>
+      <body className={cn(
+        "min-h-screen bg-background font-sans antialiased flex flex-col",
+        inter.variable,
+        poppins.variable
+      )}>
+        <ClientBody>
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </ClientBody>
+      </body>
     </html>
   );
 }
