@@ -300,8 +300,8 @@ export default function CohortScheduleSection() {
                         {detail.items && (
                           <ul className="list-none mt-3 space-y-2">
                             {detail.items.map((item: string, i: number) => (
-                              <li key={i} className="flex items-start pl-6 relative">
-                                <span className="text-gray-400 absolute left-0">•</span>
+                              <li key={i} className="text-gray-300 py-1 flex items-start">
+                                <span className="inline-block w-1.5 h-1.5 mr-2.5 mt-2 bg-primary rounded-full flex-shrink-0"></span>
                                 <span>{item}</span>
                               </li>
                             ))}
