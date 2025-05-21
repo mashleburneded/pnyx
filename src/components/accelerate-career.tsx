@@ -48,16 +48,6 @@ export default function AccelerateCareerSection() {
           From zero to professional market maker in just 4 intense weeks
         </p>
 
-        <div className="mb-10 max-w-4xl mx-auto">
-          <Image
-            src="https://ext.same-assets.com/1232453280/849522504.webp"
-            alt="Cohort Program Overview"
-            width={1200}
-            height={675}
-            className="rounded-md mx-auto shadow-2xl"
-          />
-        </div>
-
         <p className="text-center text-gray-300 max-w-2xl mx-auto mb-10 text-sm md:text-base">
           Your cohort enrollment includes all four premium{' '}
           <a href="https://courses.botcamp.xyz/slides/all" className="text-primary hover:text-primary/80 transition-colors duration-300">
@@ -70,7 +60,7 @@ export default function AccelerateCareerSection() {
           {courses.map((course) => (
             <div
               key={course.name}
-              className="bg-gray-900/30 backdrop-blur-sm border border-gray-800 p-5 rounded-md flex flex-col items-center text-center hover:bg-gray-800/40 transition-all duration-300"
+              className="bg-black backdrop-blur-sm border border-gray-800 p-5 rounded-md flex flex-col items-center text-center hover:bg-gray-800/40 transition-all duration-300 shadow-lg"
             >
               <h3 className="text-lg font-semibold text-primary mb-1.5">{course.name}</h3>
               <p className="text-gray-400 text-sm">{course.level}</p>
