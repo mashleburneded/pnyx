@@ -189,7 +189,7 @@ const WeekIcon = ({ weekNumber }: { weekNumber: number }) => {
 
 export default function CohortScheduleSection() {
   return (
-    <div className="py-20 md:py-28 bg-black text-white relative overflow-hidden -mt-1">
+    <div className="py-20 md:py-28 bg-black text-white relative overflow-hidden -mt-1 mb-0">
       {/* Background effect */}
       <div className="absolute inset-0 bg-black"></div>
       {/* Grid pattern overlay */}
