@@ -216,7 +216,7 @@ export default function CohortScheduleSection() {
           {scheduleHighlights.map((highlight) => (
             <div
               key={highlight.title}
-              className="bg-gray-900/95 backdrop-blur-sm p-8 rounded-md flex flex-col items-center text-center card-hover border border-gray-800/70 shadow-lg"
+              className="bg-black backdrop-blur-sm p-4 py-4 rounded-md flex flex-col items-center text-center card-hover border border-gray-900 shadow-lg w-full md:w-[95%] mx-auto"
             >
               <div className="relative w-16 h-16 mb-5 rounded-full bg-primary/10 flex items-center justify-center p-3 ring-2 ring-primary/20">
                 <Image 
@@ -234,7 +234,7 @@ export default function CohortScheduleSection() {
         </div>
 
         {weeklySchedule.map((weekData) => (
-          <div key={weekData.week} className="mb-8 last:mb-0 bg-gray-900/80 rounded-md p-5 md:p-7 border border-gray-800/60 backdrop-blur-sm relative shadow-md">
+          <div key={weekData.week} className="mb-6 last:mb-0 bg-black rounded-md p-4 md:p-6 border border-gray-800 backdrop-blur-sm relative shadow-md">
             {weekData.week !== 0 && (
               <div className="absolute left-[2.5rem] -top-8 w-px h-8 bg-gradient-to-b from-transparent to-primary/50"></div>
             )}
@@ -256,9 +256,7 @@ export default function CohortScheduleSection() {
               <Accordion type="single" collapsible className="w-full">
                 {weekData.details.map((detail: SessionDetail, index) => (
                   <AccordionItem key={index} value={`week-${weekData.week}-detail-${index}`} className="border-b border-gray-800/30 last:border-b-0 relative mb-2 last:mb-0">
-                    <div className="absolute left-[5px] md:left-[calc(5rem+5px)] top-[1.5rem] w-3 h-3 rounded-full bg-primary/80 -translate-x-1/2"></div>
-                    
-                    <AccordionTrigger className="py-5 text-left hover:no-underline group pl-8 md:pl-16 rounded-lg hover:bg-gray-800/20 transition-colors">
+                    <AccordionTrigger className="py-4 text-left hover:no-underline group pl-8 md:pl-16 rounded-lg hover:bg-gray-900/50 transition-colors">
                       <div className="flex-grow">
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                           <h4 className={`text-lg md:text-xl font-bold font-heading transition-colors ${
@@ -298,14 +296,13 @@ export default function CohortScheduleSection() {
                         </div>
                       </div>
                     </AccordionTrigger>
-                    <AccordionContent className="pl-8 md:pl-16 pb-6 pt-2 text-gray-300 text-sm md:text-base leading-relaxed">
-                      <div className="bg-gray-900/80 p-4 md:p-5 rounded-md border border-gray-800/60 shadow-inner">
+                    <AccordionContent className="pl-8 md:pl-16 pb-5 pt-2 text-gray-300 text-sm md:text-base leading-relaxed">
+                      <div className="bg-black p-4 md:p-5 rounded-md border border-gray-800 shadow-inner">
                         <p>{detail.description}</p>
                         {detail.items && (
                           <ul className="list-none mt-3 space-y-2">
                             {detail.items.map((item: string, i: number) => (
-                              <li key={i} className="text-gray-300 py-1 flex items-start">
-                                <span className="text-primary mr-3 mt-0.5 flex-shrink-0">•</span>
+                              <li key={i} className="text-gray-300 py-1">
                                 <span>{item}</span>
                               </li>
                             ))}
