@@ -16,17 +16,17 @@ const scheduleHighlights = [
   {
     title: 'Theory Sessions',
     description: 'Taught by Hummingbot core maintainers, these sessions cover fundamental market making concepts, strategies, and business models.',
-    icon: 'https://ext.same-assets.com/1232453280/538812354.svg',
+    icon: '/theory-icon.svg',
   },
   {
     title: 'Technical Sessions',
     description: "Hands-on coding workshops where you'll learn to build, test, and deploy algorithmic trading strategies using Hummingbot.",
-    icon: 'https://ext.same-assets.com/1232453280/4031047187.svg',
+    icon: '/technical-icon.svg',
   },
   {
     title: 'Demo Day',
     description: 'Present your custom trading strategy to peers and industry experts, showcasing your skills and earning certification as a Hummingbot developer.',
-    icon: 'https://ext.same-assets.com/1232453280/2833895142.svg',
+    icon: '/demo-icon.svg',
   },
 ];
 
@@ -168,20 +168,21 @@ const weeklySchedule = [
 ];
 
 const WeekIcon = ({ weekNumber }: { weekNumber: number }) => {
-  let actualIconSrc = 'https://ext.same-assets.com/1232453280/2453636751.svg'; // default to 1.svg
-  if (weekNumber === 0) actualIconSrc = 'https://ext.same-assets.com/1232453280/2956181938.svg';
-  else if (weekNumber === 1) actualIconSrc = 'https://ext.same-assets.com/1232453280/2453636751.svg';
-  else if (weekNumber === 2) actualIconSrc = 'https://www.botcamp.xyz/cohorts/2.svg'; // Placeholder, replace with actual if available
-  else if (weekNumber === 3) actualIconSrc = 'https://ext.same-assets.com/1232453280/3262849583.svg';
-  else if (weekNumber === 4) actualIconSrc = 'https://www.botcamp.xyz/cohorts/4.svg'; // Placeholder, replace with actual if available
+  let actualIconSrc = `/week-1-icon.svg`; // default to week-1-icon.svg
+  if (weekNumber === 0) actualIconSrc = `/week-0-icon.svg`;
+  else if (weekNumber === 1) actualIconSrc = `/week-1-icon.svg`;
+  else if (weekNumber === 2) actualIconSrc = `/week-2-icon.svg`;
+  else if (weekNumber === 3) actualIconSrc = `/week-3-icon.svg`;
+  else if (weekNumber === 4) actualIconSrc = `/week-4-icon.svg`;
 
   return (
-    <div className="relative w-10 h-10 md:w-12 md:h-12 mr-4 md:mr-5 flex-shrink-0 rounded-full bg-black p-2 border border-gray-900">
+    <div className="relative w-10 h-10 md:w-12 md:h-12 mr-4 md:mr-5 flex-shrink-0 rounded-full bg-black p-2 border border-gray-800">
       <Image 
         src={actualIconSrc} 
         alt={`Week ${weekNumber}`} 
-        width={56} 
-        height={56}
+        width={40} 
+        height={40}
+        className="drop-shadow-md"
       />
     </div>
   );
@@ -297,18 +298,18 @@ export default function CohortScheduleSection() {
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="pl-8 md:pl-16 pb-5 pt-2 text-gray-300 text-sm md:text-base leading-relaxed">
-                      <div className="bg-black p-4 md:p-5 rounded-md border border-gray-900 shadow-inner">
-                        <p>{detail.description}</p>
+                      <div className="bg-black p-4 py-5 md:p-5 rounded-md border border-gray-900 shadow-inner max-w-full overflow-visible">
+                        <p className="whitespace-normal">{detail.description}</p>
                         {detail.items && (
                           <ul className="list-none mt-3 space-y-2">
                             {detail.items.map((item: string, i: number) => (
-                              <li key={i} className="text-gray-300 py-1">
+                              <li key={i} className="text-gray-300 py-1 whitespace-normal">
                                 <span>{item}</span>
                               </li>
                             ))}
                           </ul>
                         )}
-                        {detail.footer && <p className="mt-3 text-sm text-gray-400 italic">{detail.footer}</p>}
+                        {detail.footer && <p className="mt-3 text-sm text-gray-400 italic whitespace-normal">{detail.footer}</p>}
                       </div>
                     </AccordionContent>
                   </AccordionItem>
